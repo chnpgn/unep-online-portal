@@ -1,0 +1,106 @@
+<style>
+    .form-container {
+        display: flex;
+        justify-content: center;
+        padding: 40px 20px;
+        background: #f5f7fa;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        min-height: 100vh;
+    }
+    .form-wrapper {
+        background: white;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 600px;
+    }
+    .form-wrapper h2 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 30px;
+        font-size: 28px;
+    }
+    .form-wrapper input {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 14px;
+        box-sizing: border-box;
+        transition: border-color 0.3s;
+    }
+    .form-wrapper input:focus {
+        outline: none;
+        border-color: #667eea;
+        box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
+    }
+    .form-wrapper label {
+        display: block;
+        margin-bottom: 8px;
+        color: #333;
+        font-weight: 500;
+    }
+    .checkbox-group {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+    .checkbox-group input[type="checkbox"] {
+        width: auto;
+        margin-right: 10px;
+        cursor: pointer;
+    }
+    .form-wrapper button {
+        width: 100%;
+        padding: 12px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: transform 0.2s;
+        margin-top: 10px;
+    }
+    .form-wrapper button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    }
+    .success-message {
+        color: #27ae60;
+        margin-top: 15px;
+        text-align: center;
+        font-size: 14px;
+        font-weight: bold;
+    }
+</style>
+
+<div class="form-container">
+    <div class="form-wrapper">
+        <h2>Submit Your Info</h2>
+        <form method="post" asp-action="Submit">
+            <input name="IndexNumber" placeholder="Index Number" required /><br/>
+            <input name="FullName" placeholder="Full Name" required /><br/>
+            <input name="Email" placeholder="Email" type="email" required /><br/>
+            <input name="CurrentLocation" placeholder="Current Location" /><br/>
+            <input name="HighestEducationLevel" placeholder="Highest Education Level" /><br/>
+            <input name="DutyStation" placeholder="Duty Station" /><br/>
+            <div class="checkbox-group">
+                <input type="checkbox" name="AvailabilityForRemoteWork" id="remoteWork" />
+                <label for="remoteWork">Available for Remote Work</label>
+            </div>
+            <input name="SoftwareExpertise" placeholder="Software Expertise" /><br/>
+            <input name="SoftwareExpertiseLevel" placeholder="Expertise Level" /><br/>
+            <input name="Language" placeholder="Language" /><br/>
+            <input name="LevelOfResponsibility" placeholder="Level of Responsibility" /><br/>
+            <button type="submit">Submit</button>
+        </form>
+        @if (!string.IsNullOrEmpty(ViewBag.Message))
+        {
+            <p class="success-message">@ViewBag.Message</p>
+        }
+    </div>
+</div>

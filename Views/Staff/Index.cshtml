@@ -1,0 +1,112 @@
+@model IEnumerable<FormData>
+<style>
+    .staff-container {
+        display: flex;
+        justify-content: center;
+        padding: 40px 20px;
+        background: #f5f7fa;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        min-height: 100vh;
+    }
+    .staff-wrapper {
+        background: white;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 900px;
+    }
+    .staff-wrapper h2 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 30px;
+        font-size: 28px;
+    }
+    .add-btn-container {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    .add-btn-container a {
+        display: inline-block;
+        padding: 12px 30px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+        transition: transform 0.2s;
+    }
+    .add-btn-container a:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    }
+    .staff-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+    .staff-table thead {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+    }
+    .staff-table th {
+        padding: 15px;
+        text-align: left;
+        font-weight: 600;
+    }
+    .staff-table td {
+        padding: 12px 15px;
+        border-bottom: 1px solid #e0e0e0;
+    }
+    .staff-table tbody tr:hover {
+        background-color: #f9f9f9;
+    }
+    .staff-table a {
+        color: #667eea;
+        text-decoration: none;
+        font-weight: 500;
+        margin-right: 10px;
+    }
+    .staff-table a:hover {
+        text-decoration: underline;
+    }
+    .staff-table .separator {
+        color: #ccc;
+    }
+</style>
+
+<div class="staff-container">
+    <div class="staff-wrapper">
+        <h2>Staff List</h2>
+        <div class="add-btn-container">
+            <a href="/Staff/Create">+ Add New Staff</a>
+        </div>
+        <table class="staff-table">
+            <thead>
+                <tr>
+                    <th>Index Number</th>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Current Location</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var item in Model)
+                {
+                    <tr>
+                        <td>@item.IndexNumber</td>
+                        <td>@item.FullName</td>
+                        <td>@item.Email</td>
+                        <td>@item.CurrentLocation</td>
+                        <td>
+                            <a href="/Staff/Edit/@item.Id">Edit</a>
+                            <span class="separator">|</span>
+                            <a href="/Staff/Delete/@item.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

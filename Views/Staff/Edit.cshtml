@@ -1,0 +1,97 @@
+@model FormData
+<style>
+    .form-container {
+        display: flex;
+        justify-content: center;
+        padding: 40px 20px;
+        background: #f5f7fa;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        min-height: 100vh;
+    }
+    .form-wrapper {
+        background: white;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 600px;
+    }
+    .form-wrapper h2 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 30px;
+        font-size: 28px;
+    }
+    .form-wrapper input {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 14px;
+        box-sizing: border-box;
+        transition: border-color 0.3s;
+    }
+    .form-wrapper input:focus {
+        outline: none;
+        border-color: #667eea;
+        box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
+    }
+    .form-wrapper label {
+        display: block;
+        margin-bottom: 8px;
+        color: #333;
+        font-weight: 500;
+    }
+    .checkbox-group {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+    .checkbox-group input[type="checkbox"] {
+        width: auto;
+        margin-right: 10px;
+        cursor: pointer;
+    }
+    .form-wrapper button {
+        width: 100%;
+        padding: 12px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: transform 0.2s;
+        margin-top: 10px;
+    }
+    .form-wrapper button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    }
+</style>
+
+<div class="form-container">
+    <div class="form-wrapper">
+        <h2>Edit Staff</h2>
+        <form method="post">
+            <input type="hidden" name="Id" value="@Model.Id" />
+            <input name="IndexNumber" value="@Model.IndexNumber" required />
+            <input name="FullName" value="@Model.FullName" required />
+            <input name="Email" value="@Model.Email" type="email" />
+            <input name="CurrentLocation" value="@Model.CurrentLocation" />
+            <input name="HighestEducationLevel" value="@Model.HighestEducationLevel" />
+            <input name="DutyStation" value="@Model.DutyStation" />
+            <div class="checkbox-group">
+                <input type="checkbox" name="AvailabilityForRemoteWork" id="remoteWork" @(Model.AvailabilityForRemoteWork ? "checked" : "") />
+                <label for="remoteWork">Availability for Remote Work</label>
+            </div>
+            <input name="SoftwareExpertise" value="@Model.SoftwareExpertise" />
+            <input name="SoftwareExpertiseLevel" value="@Model.SoftwareExpertiseLevel" />
+            <input name="Language" value="@Model.Language" />
+            <input name="LevelOfResponsibility" value="@Model.LevelOfResponsibility" />
+            <button type="submit">Update</button>
+        </form>
+    </div>
+</div>
