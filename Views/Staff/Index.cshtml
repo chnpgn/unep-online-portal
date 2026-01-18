@@ -79,7 +79,7 @@
     <div class="staff-wrapper">
         <h2>Staff List</h2>
         <div class="add-btn-container">
-            <a href="/Staff/Create">+ Add New Staff</a>
+            <a asp-action="Create">+ Add New Staff</a>
         </div>
         <table class="staff-table">
             <thead>
@@ -100,9 +100,9 @@
                         <td>@item.Email</td>
                         <td>@item.CurrentLocation</td>
                         <td>
-                            <a href="/Staff/Edit/@item.Id">Edit</a>
+                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
                             <span class="separator">|</span>
-                            <a href="/Staff/Delete/@item.Id">Delete</a>
+                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                         </td>
                     </tr>
                 }
